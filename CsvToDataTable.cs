@@ -5,54 +5,80 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.IO;
+using System.Diagnostics;
 
 namespace CsvToDataTable
 {
-    public class CsvToDataTable
+    public class CSV2DT
     {
-        DataTable dataTable = new DataTable();
-        private string _csvPath
+        private DataTable dataTable = new DataTable("table");
+        private string _csvPath;
+        private string csvPath
         {
             get
             {
-                return _csvPath;
-            }
-            set
-            {
-                _csvPath = value;
+                if (_csvPath != null)
+                {
+                    return _csvPath;
+                }
+                else
+                {
+                    return "IECMotorFrameSize.csv";
+                }                
             }
         }
 
-        private StreamReader _sr
+        private string csvContent
         {
             get
             {
-                return new StreamReader(_csvPath);
+                return System.IO.File.ReadAllText(csvPath);
             }
         }
 
-        public CsvToDataTable()
+        public CSV2DT()
         {
         }
 
-        public CsvToDataTable(string csvPath)
+        public CSV2DT(string csvPath)
         {
             this._csvPath = csvPath;            
         }
 
-        private void streamReaderToDataTable()
+        public CSV2DT(string csvPath, char[] delimiter)
         {
-            string[] headers = _sr.ReadLine().Split(';');
-            foreach (string header in headers)
+            this._csvPath = csvPath;
+        }
+
+        private void streamReaderToDataTable(string csvContent)
+        {
+            string[] allLines = csvContent.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            if (allLines.Length >= 2)
             {
-                dataTable.Columns.Add(header);
+                int i = 0;
+                foreach (string line in allLines)
+                {
+                    if (i == 0)
+                    {
+                        string[] headers = line.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                        foreach (string header in headers)
+                        {
+                            dataTable.Columns.Add(header);
+                        }
+                    }
+                    else
+                    {
+                        string[] dataCells = line.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                        dataTable.Rows.Add(dataCells);
+                    }
+                    i++;
+                }
             }
         }
 
         public DataTable dataTableExample()
         {
-            this._csvPath = "IECMotorFrameSize.csv";
-            streamReaderToDataTable();
+            streamReaderToDataTable(csvContent);
             return dataTable;
         }
     }
