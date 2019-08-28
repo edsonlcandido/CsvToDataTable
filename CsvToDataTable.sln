@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvToDataTable", "CsvToDataTable.csproj", "{1C109F93-49B6-4AC1-8A34-29003C2D1911}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCsvToDataTable", "..\..\TestCsvToDataTable\TestCsvToDataTable\TestCsvToDataTable.csproj", "{07CB237A-A9B9-4A80-8CB0-97AA6150FEB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1C109F93-49B6-4AC1-8A34-29003C2D1911}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C109F93-49B6-4AC1-8A34-29003C2D1911}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C109F93-49B6-4AC1-8A34-29003C2D1911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07CB237A-A9B9-4A80-8CB0-97AA6150FEB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07CB237A-A9B9-4A80-8CB0-97AA6150FEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07CB237A-A9B9-4A80-8CB0-97AA6150FEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07CB237A-A9B9-4A80-8CB0-97AA6150FEB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
