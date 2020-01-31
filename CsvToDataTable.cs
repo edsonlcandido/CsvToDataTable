@@ -116,6 +116,11 @@ namespace CsvToDataTable
             }
         }
 
+        public DataTable resourceToDataTable(string resourceCSV )
+        {
+            return stringToDataTable(resourceCSV, true);
+        }
+
         public DataTable dataTableExample()
         {
             stringToDataTable(csvContent);
